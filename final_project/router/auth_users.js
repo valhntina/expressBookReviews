@@ -54,8 +54,9 @@ regd_users.post("/login", (req,res) => {
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
   const isbn = req.params.isbn;
-  const review = req.query.review;
   const username = req.session.authorization.username;
+  const { review } = req.body;
+
 
   if (!review) {
     return res.status(400).json({ message: "Review text is required." });
